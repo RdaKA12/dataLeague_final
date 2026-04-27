@@ -24,36 +24,18 @@ def resolve_column(df: pd.DataFrame, candidates: list[str]) -> str | None:
     return None
 
 
-def build_batch_outputs(df: pd.DataFrame, results: list[dict]) -> tuple[pd.DataFrame, pd.DataFrame]:
+def build_batch_output(df: pd.DataFrame, results: list[dict]) -> pd.DataFrame:
     result_df = pd.DataFrame(results)
-    result_df["prediction"] = result_df["decision"].map({"Organic": "O", "Manipulative": "M"})
-
-    detailed = pd.concat([df.reset_index(drop=True), result_df], axis=1)
-    id_col = resolve_column(detailed, BATCH_ID_COLUMNS)
-    text_col = resolve_column(detailed, BATCH_TEXT_COLUMNS)
-
-    front_cols = [col for col in [id_col, text_col] if col is not None]
-    prediction_cols = [
-        "prediction",
-        "manipulative_score",
-        "organic_score",
-        "confidence",
-        "review_flag",
-        "threshold",
-    ]
-    hidden_cols = ["decision", "decision_tr"]
-    remaining_cols = [col for col in detailed.columns if col not in front_cols + prediction_cols + hidden_cols]
-    detailed = detailed[front_cols + prediction_cols + remaining_cols]
+    labels = result_df["decision"].map({"Organic": "O", "Manipulative": "M"})
+    id_col = resolve_column(df, BATCH_ID_COLUMNS)
+    text_col = resolve_column(df, BATCH_TEXT_COLUMNS)
 
     if id_col is None:
-        submission = pd.DataFrame({"test_id": [f"TEST_{idx:04d}" for idx in range(len(result_df))]})
+        test_ids = [f"TEST_{idx:04d}" for idx in range(len(df))]
     else:
-        submission = detailed[[id_col]].rename(columns={id_col: "test_id"}).copy()
-    submission["prediction"] = result_df["prediction"]
-    submission["manipulative_score"] = result_df["manipulative_score"]
-    submission["organic_score"] = result_df["organic_score"]
-    submission["review_flag"] = result_df["review_flag"]
-    return detailed, submission
+        test_ids = df[id_col].astype(str).tolist()
+    texts = df[text_col].fillna("").astype(str).tolist() if text_col is not None else [""] * len(df)
+    return pd.DataFrame({"test_id": test_ids, "text": texts, "label": labels})
 
 
 st.set_page_config(page_title="V11 Manipulation Detector", layout="wide")
@@ -110,19 +92,12 @@ with tab_batch:
                 st.warning("`test_id` kolonu bulunamadı; çıktı için TEST_0000 formatında sıra ID üretilecek.")
             if st.button("Batch skorla"):
                 results = predict_many(df[text_col].fillna("").astype(str).tolist(), Path(model_dir), batch_size=32)
-                detailed, submission = build_batch_outputs(df, results)
-                st.dataframe(detailed.head(200), use_container_width=True)
-                c1, c2 = st.columns(2)
-                c1.download_button(
-                    "Detaylı tahmin CSV indir",
-                    detailed.to_csv(index=False).encode("utf-8-sig"),
-                    "v11_batch_predictions_detailed.csv",
-                    mime="text/csv",
-                )
-                c2.download_button(
-                    "Submission CSV indir",
-                    submission.to_csv(index=False).encode("utf-8-sig"),
-                    "v11_batch_submission.csv",
+                output = build_batch_output(df, results)
+                st.dataframe(output.head(200), use_container_width=True)
+                st.download_button(
+                    "Batch tahmin CSV indir",
+                    output.to_csv(index=False).encode("utf-8-sig"),
+                    "v11_batch_predictions.csv",
                     mime="text/csv",
                 )
 
