@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import csv
 from pathlib import Path
 
 import pandas as pd
@@ -38,6 +39,10 @@ def build_batch_output(df: pd.DataFrame, results: list[dict]) -> pd.DataFrame:
     return pd.DataFrame({"test_id": test_ids, "text": texts, "label": labels})
 
 
+def csv_download_bytes(df: pd.DataFrame) -> bytes:
+    return df.to_csv(index=False, quoting=csv.QUOTE_ALL, lineterminator="\n").encode("utf-8")
+
+
 st.set_page_config(page_title="V11 Manipulation Detector", layout="wide")
 st.title("V11 Text-First BERT Manipulation Detector")
 
@@ -63,7 +68,7 @@ with tab_live:
         st.json(result["nearest_manual_examples"])
 
 with tab_batch:
-    st.caption("Beklenen jüri/test formatı: `test_id,text`. `test_id` korunur, tahmin etiketi `O/M` olarak üretilir.")
+    st.caption("Beklenen jüri/test formatı: `test_id,text`. Çıktıda `label` 0-1 arası manipülatiflik skorudur.")
     template = pd.DataFrame(
         {
             "test_id": ["TEST_0000", "TEST_0001"],
@@ -75,7 +80,7 @@ with tab_batch:
     )
     st.download_button(
         "Örnek input CSV indir",
-        template.to_csv(index=False).encode("utf-8-sig"),
+        csv_download_bytes(template),
         "v11_batch_input_template.csv",
         mime="text/csv",
     )
@@ -97,7 +102,7 @@ with tab_batch:
                 st.dataframe(output.head(200), use_container_width=True)
                 st.download_button(
                     "Batch tahmin CSV indir",
-                    output.to_csv(index=False).encode("utf-8-sig"),
+                    csv_download_bytes(output),
                     "v11_batch_predictions.csv",
                     mime="text/csv",
                 )
