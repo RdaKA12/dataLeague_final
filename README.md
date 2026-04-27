@@ -75,3 +75,17 @@ Full delivery details are in:
 
 - `version11_bert/V11_JURY_DELIVERY_REPORT.md`
 - `version11_bert/outputs/analytics/analytics_summary.json`
+
+## Pitch deck
+
+The final jury presentation is available at:
+
+```text
+version11_delivery/pitch_deck/dataleague_v11_final_pitch_deck.pptx
+```
+
+Slide-by-slide flow:
+
+```text
+version11_delivery/pitch_deck/V11_SLIDE_FLOW.md
+```
