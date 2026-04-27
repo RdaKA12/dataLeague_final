@@ -1,0 +1,649 @@
+{
+  "source": "D:\\Projects\\datalig\\version11_bert\\processed\\v11_full_scored.parquet",
+  "rows_scored": 5004813,
+  "mean_manipulative_score": 0.15815660179903374,
+  "decision_counts": {
+    "Manipulative": 957403,
+    "Organic": 4047410,
+    "Review": 215247
+  },
+  "decision_rates": {
+    "manipulative_rate": 0.1912964580295008,
+    "review_rate": 0.04300800049871993
+  },
+  "top_platform_language": [
+    {
+      "url": "www.aajtak.in",
+      "language": "hi",
+      "rows": 57,
+      "mean_manipulative_score": 0.7623492123787863,
+      "manipulative_rate": 0.8596491228070176,
+      "review_rate": 0.0,
+      "manipulative_count": 49,
+      "review_count": 0
+    },
+    {
+      "url": "www.tradingview.com",
+      "language": "en",
+      "rows": 387,
+      "mean_manipulative_score": 0.7492238224630824,
+      "manipulative_rate": 0.8397932816537468,
+      "review_rate": 0.04392764857881137,
+      "manipulative_count": 325,
+      "review_count": 17
+    },
+    {
+      "url": "vive.im",
+      "language": "en",
+      "rows": 65,
+      "mean_manipulative_score": 0.7463005652794471,
+      "manipulative_rate": 0.8307692307692308,
+      "review_rate": 0.03076923076923077,
+      "manipulative_count": 54,
+      "review_count": 2
+    },
+    {
+      "url": "cysec.social",
+      "language": "en",
+      "rows": 25,
+      "mean_manipulative_score": 0.7254217529296875,
+      "manipulative_rate": 0.84,
+      "review_rate": 0.08,
+      "manipulative_count": 21,
+      "review_count": 2
+    },
+    {
+      "url": "www.chip.de",
+      "language": "de",
+      "rows": 27,
+      "mean_manipulative_score": 0.6936730278862847,
+      "manipulative_rate": 0.9259259259259259,
+      "review_rate": 0.037037037037037035,
+      "manipulative_count": 25,
+      "review_count": 1
+    },
+    {
+      "url": "lankanewsweb.net",
+      "language": "en",
+      "rows": 20,
+      "mean_manipulative_score": 0.681591796875,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 20,
+      "review_count": 0
+    },
+    {
+      "url": "www.ledauphine.com",
+      "language": "fr",
+      "rows": 212,
+      "mean_manipulative_score": 0.6393083716338536,
+      "manipulative_rate": 0.7783018867924528,
+      "review_rate": 0.06132075471698113,
+      "manipulative_count": 165,
+      "review_count": 13
+    },
+    {
+      "url": "x.com",
+      "language": "ar",
+      "rows": 68104,
+      "mean_manipulative_score": 0.6017713903414578,
+      "manipulative_rate": 0.6198020674262892,
+      "review_rate": 0.030468107600140962,
+      "manipulative_count": 42211,
+      "review_count": 2075
+    },
+    {
+      "url": "climatejustice.social",
+      "language": "en",
+      "rows": 31,
+      "mean_manipulative_score": 0.5760292545441659,
+      "manipulative_rate": 0.7741935483870968,
+      "review_rate": 0.0,
+      "manipulative_count": 24,
+      "review_count": 0
+    },
+    {
+      "url": "boards.4channel.org",
+      "language": "ja",
+      "rows": 27,
+      "mean_manipulative_score": 0.5148525944462529,
+      "manipulative_rate": 0.5925925925925926,
+      "review_rate": 0.037037037037037035,
+      "manipulative_count": 16,
+      "review_count": 1
+    },
+    {
+      "url": "kr.investing.com",
+      "language": "en",
+      "rows": 76,
+      "mean_manipulative_score": 0.5113198129754317,
+      "manipulative_rate": 0.631578947368421,
+      "review_rate": 0.11842105263157894,
+      "manipulative_count": 48,
+      "review_count": 9
+    },
+    {
+      "url": "www.leprogres.fr",
+      "language": "fr",
+      "rows": 75,
+      "mean_manipulative_score": 0.4794573593139648,
+      "manipulative_rate": 0.5866666666666667,
+      "review_rate": 0.02666666666666667,
+      "manipulative_count": 44,
+      "review_count": 2
+    },
+    {
+      "url": "www.youtube.com",
+      "language": "hi",
+      "rows": 201,
+      "mean_manipulative_score": 0.46494429858762826,
+      "manipulative_rate": 0.5671641791044776,
+      "review_rate": 0.0845771144278607,
+      "manipulative_count": 114,
+      "review_count": 17
+    },
+    {
+      "url": "mastodonapp.uk",
+      "language": "en",
+      "rows": 32,
+      "mean_manipulative_score": 0.4591737985610962,
+      "manipulative_rate": 0.53125,
+      "review_rate": 0.09375,
+      "manipulative_count": 17,
+      "review_count": 3
+    },
+    {
+      "url": "bitcointalk.org",
+      "language": "en",
+      "rows": 132,
+      "mean_manipulative_score": 0.45356121930209076,
+      "manipulative_rate": 0.5757575757575758,
+      "review_rate": 0.05303030303030303,
+      "manipulative_count": 76,
+      "review_count": 7
+    }
+  ],
+  "top_themes": [
+    {
+      "primary_theme": "Cryptocurrency",
+      "rows": 223083,
+      "mean_manipulative_score": 0.6199333091242645,
+      "manipulative_rate": 0.68067042311606,
+      "review_rate": 0.04920590094269846,
+      "manipulative_count": 151846,
+      "review_count": 10977
+    },
+    {
+      "primary_theme": "Politics",
+      "rows": 664663,
+      "mean_manipulative_score": 0.3889196452500781,
+      "manipulative_rate": 0.5042389902853025,
+      "review_rate": 0.09758780013330064,
+      "manipulative_count": 335149,
+      "review_count": 64863
+    },
+    {
+      "primary_theme": "Investing",
+      "rows": 88018,
+      "mean_manipulative_score": 0.23312177174623716,
+      "manipulative_rate": 0.27500056806562295,
+      "review_rate": 0.04938762525846986,
+      "manipulative_count": 24205,
+      "review_count": 4347
+    },
+    {
+      "primary_theme": "Finance",
+      "rows": 119569,
+      "mean_manipulative_score": 0.14472783761876742,
+      "manipulative_rate": 0.1825389524040512,
+      "review_rate": 0.04880027431859429,
+      "manipulative_count": 21826,
+      "review_count": 5835
+    },
+    {
+      "primary_theme": "Social",
+      "rows": 258947,
+      "mean_manipulative_score": 0.13800446052534918,
+      "manipulative_rate": 0.17229394432065248,
+      "review_rate": 0.04698644896445991,
+      "manipulative_count": 44615,
+      "review_count": 12167
+    },
+    {
+      "primary_theme": "Technology",
+      "rows": 538448,
+      "mean_manipulative_score": 0.13512121766926974,
+      "manipulative_rate": 0.1564162184649214,
+      "review_rate": 0.03321212076189344,
+      "manipulative_count": 84222,
+      "review_count": 17883
+    },
+    {
+      "primary_theme": "",
+      "rows": 39604,
+      "mean_manipulative_score": 0.13251367386826698,
+      "manipulative_rate": 0.16879608120391879,
+      "review_rate": 0.04714170285829714,
+      "manipulative_count": 6685,
+      "review_count": 1867
+    },
+    {
+      "primary_theme": "Economy",
+      "rows": 81344,
+      "mean_manipulative_score": 0.11639377406785846,
+      "manipulative_rate": 0.14618164830841857,
+      "review_rate": 0.04344512195121951,
+      "manipulative_count": 11891,
+      "review_count": 3534
+    },
+    {
+      "primary_theme": "Law",
+      "rows": 69639,
+      "mean_manipulative_score": 0.11255816681767564,
+      "manipulative_rate": 0.14635477246944958,
+      "review_rate": 0.05884633610476888,
+      "manipulative_count": 10192,
+      "review_count": 4098
+    },
+    {
+      "primary_theme": "Science",
+      "rows": 178139,
+      "mean_manipulative_score": 0.09776322248298032,
+      "manipulative_rate": 0.12210689405464273,
+      "review_rate": 0.04926489988155317,
+      "manipulative_count": 21752,
+      "review_count": 8776
+    },
+    {
+      "primary_theme": "Health",
+      "rows": 202684,
+      "mean_manipulative_score": 0.09176155722883986,
+      "manipulative_rate": 0.10998401452507352,
+      "review_rate": 0.03450198338300014,
+      "manipulative_count": 22292,
+      "review_count": 6993
+    },
+    {
+      "primary_theme": "Sports",
+      "rows": 395361,
+      "mean_manipulative_score": 0.0870089812359567,
+      "manipulative_rate": 0.09543935795387001,
+      "review_rate": 0.025928202326481367,
+      "manipulative_count": 37733,
+      "review_count": 10251
+    },
+    {
+      "primary_theme": "Business",
+      "rows": 147685,
+      "mean_manipulative_score": 0.083731622073098,
+      "manipulative_rate": 0.1026238277414768,
+      "review_rate": 0.029515522903476994,
+      "manipulative_count": 15156,
+      "review_count": 4359
+    },
+    {
+      "primary_theme": "People",
+      "rows": 798344,
+      "mean_manipulative_score": 0.08072242443144388,
+      "manipulative_rate": 0.10175438156984959,
+      "review_rate": 0.03561873077269949,
+      "manipulative_count": 81235,
+      "review_count": 28436
+    },
+    {
+      "primary_theme": "Entertainment",
+      "rows": 920810,
+      "mean_manipulative_score": 0.0666957457622965,
+      "manipulative_rate": 0.07465383738230472,
+      "review_rate": 0.025125704542739543,
+      "manipulative_count": 68742,
+      "review_count": 23136
+    }
+  ],
+  "top_authors": [
+    {
+      "author_hash": "b34e6852dfc57a38fdf638762c25154929905538",
+      "rows": 7950,
+      "mean_manipulative_score": 0.9975294197130503,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 7950,
+      "review_count": 0,
+      "author_risk_score": 0.9842875624464935
+    },
+    {
+      "author_hash": "0efad71f30b3568e6d87580d8e3dd2092a550d2c",
+      "rows": 2214,
+      "mean_manipulative_score": 0.9966282349184169,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 2214,
+      "review_count": 0,
+      "author_risk_score": 0.9715413973080352
+    },
+    {
+      "author_hash": "e5b4159dac2eb560606eca142388610826b4c0b5",
+      "rows": 1260,
+      "mean_manipulative_score": 0.9974892268105159,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 1260,
+      "review_count": 0,
+      "author_risk_score": 0.9666779716780632
+    },
+    {
+      "author_hash": "12e2a4e9d619017b71dc3e45480237480ecd7053",
+      "rows": 1173,
+      "mean_manipulative_score": 0.9973754362478687,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 1173,
+      "review_count": 0,
+      "author_risk_score": 0.9659269769331539
+    },
+    {
+      "author_hash": "c1a2f83f09d44c5156a1c32d0e98d5da60d25082",
+      "rows": 959,
+      "mean_manipulative_score": 0.9944226977971846,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 959,
+      "review_count": 0,
+      "author_risk_score": 0.9622334849765275
+    },
+    {
+      "author_hash": "3e49cdde58f7df56c483fdab016fdf6d8e36a322",
+      "rows": 752,
+      "mean_manipulative_score": 0.9975540485787899,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 752,
+      "review_count": 0,
+      "author_risk_score": 0.9617928823939557
+    },
+    {
+      "author_hash": "23dab0629e19b877358e378daea77adc94c75834",
+      "rows": 438,
+      "mean_manipulative_score": 0.9976812214611872,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 438,
+      "review_count": 0,
+      "author_risk_score": 0.9567162812497145
+    },
+    {
+      "author_hash": "641757cfab18703d581e0023b460bb779a9ed868",
+      "rows": 309,
+      "mean_manipulative_score": 0.9966436589805825,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 309,
+      "review_count": 0,
+      "author_risk_score": 0.9527710066999713
+    },
+    {
+      "author_hash": "2c7d29681ced02c500d9cc0c179318a68363c4e0",
+      "rows": 387,
+      "mean_manipulative_score": 0.9929028888081395,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 387,
+      "review_count": 0,
+      "author_risk_score": 0.9526699015051876
+    },
+    {
+      "author_hash": "2363e1c62ef1cac12c6126fb31bfed2378418a69",
+      "rows": 220,
+      "mean_manipulative_score": 0.9977871981534091,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 220,
+      "review_count": 0,
+      "author_risk_score": 0.950225286360448
+    },
+    {
+      "author_hash": "bbcc9eac34fffbfb6e709b22a3829386b12da75b",
+      "rows": 204,
+      "mean_manipulative_score": 0.9977883731617647,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 204,
+      "review_count": 0,
+      "author_risk_score": 0.9495082757154877
+    },
+    {
+      "author_hash": "a4fce1f9b5d8a7fe738bb707a5377471100bf0be",
+      "rows": 206,
+      "mean_manipulative_score": 0.9973594887742718,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 206,
+      "review_count": 0,
+      "author_risk_score": 0.9493436651817587
+    },
+    {
+      "author_hash": "36b74830f839679ae3b6d38d6ea62dbc884742f7",
+      "rows": 215,
+      "mean_manipulative_score": 0.9964185138081395,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 215,
+      "review_count": 0,
+      "author_risk_score": 0.949185528569592
+    },
+    {
+      "author_hash": "caeccc32f6e08d808cc0262d8b04667aa895796e",
+      "rows": 163,
+      "mean_manipulative_score": 0.9977982409892638,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 163,
+      "review_count": 0,
+      "author_risk_score": 0.9473831542634334
+    },
+    {
+      "author_hash": "bf3d26a4d48547518dcfbf84b88c5e9ce9d25ed1",
+      "rows": 165,
+      "mean_manipulative_score": 0.9970614346590909,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 165,
+      "review_count": 0,
+      "author_risk_score": 0.9470568306118367
+    },
+    {
+      "author_hash": "72424019e778e4e093f603b23d0e2236fb279ecf",
+      "rows": 176,
+      "mean_manipulative_score": 0.9952059659090909,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 176,
+      "review_count": 0,
+      "author_risk_score": 0.9465563020345217
+    },
+    {
+      "author_hash": "27a5e7637993e8ed86691917332b95cd947a5c61",
+      "rows": 146,
+      "mean_manipulative_score": 0.9978395226883562,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 146,
+      "review_count": 0,
+      "author_risk_score": 0.9463628196875908
+    },
+    {
+      "author_hash": "9959e9e395fec87761f636930153c371457d66f7",
+      "rows": 187,
+      "mean_manipulative_score": 0.993380786263369,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 187,
+      "review_count": 0,
+      "author_risk_score": 0.9460369907832168
+    },
+    {
+      "author_hash": "22588b334e6385e776f84c14d9b993f30e66828d",
+      "rows": 140,
+      "mean_manipulative_score": 0.9975411551339286,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 140,
+      "review_count": 0,
+      "author_risk_score": 0.9457858209388915
+    },
+    {
+      "author_hash": "d28557b451786af89e281ccd717aa63106d140e6",
+      "rows": 138,
+      "mean_manipulative_score": 0.9972543025362319,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 138,
+      "review_count": 0,
+      "author_risk_score": 0.9454772771291619
+    },
+    {
+      "author_hash": "7678c15dd3480f7798262bcd5721fdcc304f2d92",
+      "rows": 140,
+      "mean_manipulative_score": 0.9966901506696428,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 140,
+      "review_count": 0,
+      "author_risk_score": 0.94527521826032
+    },
+    {
+      "author_hash": "61da20c6f5ab44d7631bf24eed23a53c98090da7",
+      "rows": 122,
+      "mean_manipulative_score": 0.9975465868340164,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 122,
+      "review_count": 0,
+      "author_risk_score": 0.9444847706036239
+    },
+    {
+      "author_hash": "69bc07127072f057b84bc812eda483a824a3c32d",
+      "rows": 121,
+      "mean_manipulative_score": 0.9976150891012396,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 121,
+      "review_count": 0,
+      "author_risk_score": 0.9444479115705637
+    },
+    {
+      "author_hash": "0553cfcbde4fa196411a23911e70d26562d03d92",
+      "rows": 120,
+      "mean_manipulative_score": 0.9976399739583334,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 120,
+      "review_count": 0,
+      "author_risk_score": 0.9443842404348829
+    },
+    {
+      "author_hash": "a358a89407ff217e512843903e0c61a6f1b0a2b9",
+      "rows": 116,
+      "mean_manipulative_score": 0.99755859375,
+      "manipulative_rate": 1.0,
+      "review_rate": 0.0,
+      "manipulative_count": 116,
+      "review_count": 0,
+      "author_risk_score": 0.9440143704779219
+    }
+  ],
+  "duplicate_cluster_count_min2": 500,
+  "train_holdout_metrics": {
+    "threshold": 0.178466796875,
+    "roc_auc": 0.92480901656983,
+    "pr_auc": 0.7058975760784366,
+    "brier_score": 0.07776662052259285,
+    "accuracy": 0.8762606232294617,
+    "precision_M": 0.49660633484162897,
+    "recall_M": 0.812962962962963,
+    "f1_M": 0.6165730337078652,
+    "confusion_matrix": {
+      "tn_O": 6855,
+      "fp_O_as_M": 890,
+      "fn_M_as_O": 202,
+      "tp_M": 878
+    }
+  },
+  "external_validation_metrics": {
+    "threshold": 0.178466796875,
+    "rows": 2134,
+    "actual_counts": {
+      "O": 1519,
+      "M": 615
+    },
+    "predicted_counts": {
+      "O": 1335,
+      "M": 799
+    },
+    "accuracy": 0.8556701030927835,
+    "roc_auc": 0.9429764982310784,
+    "pr_auc": 0.8919341966903094,
+    "brier_score": 0.1017116821267524,
+    "precision_M": 0.6921151439299124,
+    "recall_M": 0.8991869918699187,
+    "f1_M": 0.7821782178217822,
+    "confusion_matrix": {
+      "layout": "rows=actual, cols=predicted",
+      "labels": [
+        "O",
+        "M"
+      ],
+      "matrix": [
+        [
+          1273,
+          246
+        ],
+        [
+          62,
+          553
+        ]
+      ],
+      "tn_O": 1273,
+      "fp_O_as_M": 246,
+      "fn_M_as_O": 62,
+      "tp_M": 553
+    },
+    "classification_report": {
+      "O": {
+        "precision": 0.9535580524344569,
+        "recall": 0.8380513495720869,
+        "f1-score": 0.8920812894183602,
+        "support": 1519.0
+      },
+      "M": {
+        "precision": 0.6921151439299124,
+        "recall": 0.8991869918699187,
+        "f1-score": 0.7821782178217822,
+        "support": 615.0
+      },
+      "accuracy": 0.8556701030927835,
+      "macro avg": {
+        "precision": 0.8228365981821846,
+        "recall": 0.8686191707210028,
+        "f1-score": 0.8371297536200712,
+        "support": 2134.0
+      },
+      "weighted avg": {
+        "precision": 0.8782125094493141,
+        "recall": 0.8556701030927835,
+        "f1-score": 0.8604081924024767,
+        "support": 2134.0
+      }
+    }
+  },
+  "outputs": {
+    "platform_language_risk": "D:\\Projects\\datalig\\version11_bert\\outputs\\analytics\\platform_language_risk.csv",
+    "platform_risk": "D:\\Projects\\datalig\\version11_bert\\outputs\\analytics\\platform_risk.csv",
+    "language_risk": "D:\\Projects\\datalig\\version11_bert\\outputs\\analytics\\language_risk.csv",
+    "theme_risk": "D:\\Projects\\datalig\\version11_bert\\outputs\\analytics\\theme_risk.csv",
+    "daily_risk_trend": "D:\\Projects\\datalig\\version11_bert\\outputs\\analytics\\daily_risk_trend.csv",
+    "author_risk": "D:\\Projects\\datalig\\version11_bert\\outputs\\analytics\\author_risk.csv",
+    "high_risk_examples": "D:\\Projects\\datalig\\version11_bert\\outputs\\analytics\\high_risk_examples.csv",
+    "high_risk_duplicate_clusters": "D:\\Projects\\datalig\\version11_bert\\outputs\\analytics\\high_risk_duplicate_clusters.csv"
+  }
+}

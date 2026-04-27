@@ -1,0 +1,152 @@
+{
+  "dataset": {
+    "rows_after_blank_drop": 59867,
+    "splits": {
+      "train": 41773,
+      "val": 9269,
+      "holdout": 8825
+    },
+    "labels": {
+      "O": 52323,
+      "M": 7544
+    }
+  },
+  "cuda": {
+    "device": "cuda",
+    "torch_version": "2.11.0+cu128",
+    "cuda_version": "12.8",
+    "device_name": "NVIDIA GeForce RTX 4070 Laptop GPU"
+  },
+  "bert": {
+    "best_epoch": 3,
+    "validation": {
+      "threshold": 0.178466796875,
+      "roc_auc": 0.9225589537346081,
+      "pr_auc": 0.750065330948493,
+      "brier_score": 0.07773548311661309,
+      "accuracy": 0.8763620671054051,
+      "precision_M": 0.5302154492905938,
+      "recall_M": 0.8001586042823157,
+      "f1_M": 0.6378002528445006,
+      "confusion_matrix": {
+        "tn_O": 7114,
+        "fp_O_as_M": 894,
+        "fn_M_as_O": 252,
+        "tp_M": 1009
+      }
+    },
+    "validation_review": {
+      "review_margin": 0.08,
+      "review_rate": 0.04477289891034632,
+      "review_n": 415,
+      "decided_n": 8854,
+      "decided_metrics": {
+        "threshold": 0.178466796875,
+        "roc_auc": 0.9293938058477524,
+        "pr_auc": 0.7695352748838373,
+        "brier_score": 0.07434904353944317,
+        "accuracy": 0.8896543934944657,
+        "precision_M": 0.5594965675057209,
+        "recall_M": 0.8253164556962025,
+        "f1_M": 0.6668939652233208,
+        "confusion_matrix": {
+          "tn_O": 6899,
+          "fp_O_as_M": 770,
+          "fn_M_as_O": 207,
+          "tp_M": 978
+        }
+      }
+    },
+    "holdout": {
+      "threshold": 0.178466796875,
+      "roc_auc": 0.92480901656983,
+      "pr_auc": 0.7058975760784366,
+      "brier_score": 0.07776662052259285,
+      "accuracy": 0.8762606232294617,
+      "precision_M": 0.49660633484162897,
+      "recall_M": 0.812962962962963,
+      "f1_M": 0.6165730337078652,
+      "confusion_matrix": {
+        "tn_O": 6855,
+        "fp_O_as_M": 890,
+        "fn_M_as_O": 202,
+        "tp_M": 878
+      }
+    },
+    "holdout_review": {
+      "review_margin": 0.08,
+      "review_rate": 0.04169971671388102,
+      "review_n": 368,
+      "decided_n": 8457,
+      "decided_metrics": {
+        "threshold": 0.178466796875,
+        "roc_auc": 0.931295614741478,
+        "pr_auc": 0.7237315683639386,
+        "brier_score": 0.07487660563835444,
+        "accuracy": 0.8881400023649049,
+        "precision_M": 0.5214987714987716,
+        "recall_M": 0.8356299212598425,
+        "f1_M": 0.6422087745839636,
+        "confusion_matrix": {
+          "tn_O": 6662,
+          "fp_O_as_M": 779,
+          "fn_M_as_O": 167,
+          "tp_M": 849
+        }
+      }
+    }
+  },
+  "tfidf": {
+    "validation": {
+      "threshold": 0.32457241008959353,
+      "roc_auc": 0.8708691189856931,
+      "pr_auc": 0.6380409402642901,
+      "brier_score": 0.10274466383093764,
+      "accuracy": 0.7899449778832668,
+      "precision_M": 0.3731508875739645,
+      "recall_M": 0.8001586042823157,
+      "f1_M": 0.508953341740227,
+      "confusion_matrix": {
+        "tn_O": 6313,
+        "fp_O_as_M": 1695,
+        "fn_M_as_O": 252,
+        "tp_M": 1009
+      }
+    },
+    "holdout": {
+      "threshold": 0.32457241008959353,
+      "roc_auc": 0.872459113406499,
+      "pr_auc": 0.5672549323737447,
+      "brier_score": 0.10394334243733003,
+      "accuracy": 0.7876487252124645,
+      "precision_M": 0.3417065390749601,
+      "recall_M": 0.7935185185185185,
+      "f1_M": 0.4777034559643255,
+      "confusion_matrix": {
+        "tn_O": 6094,
+        "fp_O_as_M": 1651,
+        "fn_M_as_O": 223,
+        "tp_M": 857
+      }
+    }
+  },
+  "final_config": {
+    "version": "v11_text_first_bert",
+    "model_name": "xlm-roberta-base",
+    "max_length": 256,
+    "label_mapping": {
+      "O": 0,
+      "M": 1
+    },
+    "threshold": 0.178466796875,
+    "review_margin": 0.08,
+    "min_recall_target": 0.8,
+    "final_strategy": "bert",
+    "ensemble_weight_bert": 1.0,
+    "uses_metadata_for_prediction": false,
+    "text_feature": "original_text",
+    "model_dir": "D:\\Projects\\datalig\\version11_bert\\processed\\model",
+    "tfidf_bundle": "D:\\Projects\\datalig\\version11_bert\\processed\\tfidf_baseline.joblib",
+    "nearest_index": "D:\\Projects\\datalig\\version11_bert\\processed\\nearest_examples.joblib"
+  }
+}
