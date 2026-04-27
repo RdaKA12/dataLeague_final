@@ -91,9 +91,22 @@ streamlit run version11_bert\scripts\v11_dashboard.py
 The app supports:
 
 - Single-text live prediction
-- Batch CSV prediction
+- Batch CSV prediction with input columns `test_id,text`
 - Platform x language risk map
 - Theme risk distribution
 - Time/burst trend
 - Author risk table
 - High-risk examples
+
+Batch CSV input example:
+
+```csv
+test_id,text
+TEST_0000,"I got a likely phishing message about a fake crypto giveaway."
+TEST_0001,"No transactions on weekends; I will check it again tomorrow."
+```
+
+Batch outputs:
+
+- `v11_batch_predictions_detailed.csv`: original columns plus scores, decisions, confidence, and review flag.
+- `v11_batch_submission.csv`: `test_id,label,manipulative_score,organic_score,review_flag`.

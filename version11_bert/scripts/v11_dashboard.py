@@ -11,6 +11,54 @@ import v11_common as common
 from v11_inference import predict_many, predict_text
 
 
+BATCH_TEXT_COLUMNS = ["text", "original_text", "content", "body"]
+BATCH_ID_COLUMNS = ["test_id", "id", "row_id"]
+
+
+def resolve_column(df: pd.DataFrame, candidates: list[str]) -> str | None:
+    normalized = {str(col).strip().lower(): col for col in df.columns}
+    for candidate in candidates:
+        match = normalized.get(candidate.lower())
+        if match is not None:
+            return str(match)
+    return None
+
+
+def build_batch_outputs(df: pd.DataFrame, results: list[dict]) -> tuple[pd.DataFrame, pd.DataFrame]:
+    result_df = pd.DataFrame(results)
+    result_df["label"] = result_df["decision"].map({"Organic": "O", "Manipulative": "M"})
+    result_df["prediction"] = result_df["label"]
+
+    detailed = pd.concat([df.reset_index(drop=True), result_df], axis=1)
+    id_col = resolve_column(detailed, BATCH_ID_COLUMNS)
+    text_col = resolve_column(detailed, BATCH_TEXT_COLUMNS)
+
+    front_cols = [col for col in [id_col, text_col] if col is not None]
+    prediction_cols = [
+        "prediction",
+        "label",
+        "decision",
+        "decision_tr",
+        "manipulative_score",
+        "organic_score",
+        "confidence",
+        "review_flag",
+        "threshold",
+    ]
+    remaining_cols = [col for col in detailed.columns if col not in front_cols + prediction_cols]
+    detailed = detailed[front_cols + prediction_cols + remaining_cols]
+
+    if id_col is None:
+        submission = pd.DataFrame({"test_id": [f"TEST_{idx:04d}" for idx in range(len(result_df))]})
+    else:
+        submission = detailed[[id_col]].rename(columns={id_col: "test_id"}).copy()
+    submission["label"] = result_df["label"]
+    submission["manipulative_score"] = result_df["manipulative_score"]
+    submission["organic_score"] = result_df["organic_score"]
+    submission["review_flag"] = result_df["review_flag"]
+    return detailed, submission
+
+
 st.set_page_config(page_title="V11 Manipulation Detector", layout="wide")
 st.title("V11 Text-First BERT Manipulation Detector")
 
@@ -36,17 +84,50 @@ with tab_live:
         st.json(result["nearest_manual_examples"])
 
 with tab_batch:
-    uploaded = st.file_uploader("CSV yükle: text/original_text kolonu beklenir", type=["csv"])
+    st.caption("Beklenen jüri/test formatı: `test_id,text`. `test_id` korunur, tahmin etiketi `O/M` olarak üretilir.")
+    template = pd.DataFrame(
+        {
+            "test_id": ["TEST_0000", "TEST_0001"],
+            "text": [
+                "I got a likely phishing message about a fake crypto giveaway.",
+                "No transactions on weekends; I will check it again tomorrow.",
+            ],
+        }
+    )
+    st.download_button(
+        "Örnek input CSV indir",
+        template.to_csv(index=False).encode("utf-8-sig"),
+        "v11_batch_input_template.csv",
+        mime="text/csv",
+    )
+    uploaded = st.file_uploader("CSV yükle: `test_id,text` formatı beklenir", type=["csv"])
     if uploaded is not None:
         df = pd.read_csv(uploaded)
-        text_col = "original_text" if "original_text" in df.columns else "text"
-        if text_col not in df.columns:
-            st.error("CSV içinde `original_text` veya `text` kolonu yok.")
-        elif st.button("Batch skorla"):
-            results = predict_many(df[text_col].fillna("").astype(str).tolist(), Path(model_dir), batch_size=32)
-            out = pd.concat([df.reset_index(drop=True), pd.DataFrame(results)], axis=1)
-            st.dataframe(out.head(200), use_container_width=True)
-            st.download_button("CSV indir", out.to_csv(index=False).encode("utf-8-sig"), "v11_batch_predictions.csv")
+        df.columns = [str(col).strip() for col in df.columns]
+        text_col = resolve_column(df, BATCH_TEXT_COLUMNS)
+        id_col = resolve_column(df, BATCH_ID_COLUMNS)
+        if text_col is None:
+            st.error("CSV içinde `text` kolonu yok. Beklenen format: `test_id,text`.")
+        else:
+            if id_col is None:
+                st.warning("`test_id` kolonu bulunamadı; çıktı için TEST_0000 formatında sıra ID üretilecek.")
+            if st.button("Batch skorla"):
+                results = predict_many(df[text_col].fillna("").astype(str).tolist(), Path(model_dir), batch_size=32)
+                detailed, submission = build_batch_outputs(df, results)
+                st.dataframe(detailed.head(200), use_container_width=True)
+                c1, c2 = st.columns(2)
+                c1.download_button(
+                    "Detaylı tahmin CSV indir",
+                    detailed.to_csv(index=False).encode("utf-8-sig"),
+                    "v11_batch_predictions_detailed.csv",
+                    mime="text/csv",
+                )
+                c2.download_button(
+                    "Submission CSV indir",
+                    submission.to_csv(index=False).encode("utf-8-sig"),
+                    "v11_batch_submission.csv",
+                    mime="text/csv",
+                )
 
 with tab_dash:
     path = Path(score_path)
