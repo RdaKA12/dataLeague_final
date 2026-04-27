@@ -6,8 +6,11 @@ challenge dataset.
 Add the final Drive link here before submission:
 
 ```text
-MODEL_DRIVE_LINK=TBD
+MODEL_DRIVE_LINK=https://drive.google.com/drive/folders/1RDjpVpzjCuMjm3iuUnyWWGspU1RrHlds?usp=sharing
 ```
+
+Drive folder:
+https://drive.google.com/drive/folders/1RDjpVpzjCuMjm3iuUnyWWGspU1RrHlds?usp=sharing
 
 Expected artefact placement after download:
 

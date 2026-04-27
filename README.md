@@ -51,6 +51,9 @@ python version11_bert\scripts\v11_build_analytics.py
 Large artefacts are not committed to GitHub. Download them from the Drive link
 provided in `MODEL_ARTIFACTS.md` and place them at the paths described there.
 
+Drive artefact folder:
+https://drive.google.com/drive/folders/1RDjpVpzjCuMjm3iuUnyWWGspU1RrHlds?usp=sharing
+
 The most important local artefact paths are:
 
 - `version11_bert/processed/model/`
