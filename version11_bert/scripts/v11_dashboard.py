@@ -27,7 +27,18 @@ def resolve_column(df: pd.DataFrame, candidates: list[str]) -> str | None:
 
 def build_batch_output(df: pd.DataFrame, results: list[dict]) -> pd.DataFrame:
     result_df = pd.DataFrame(results)
-    labels = result_df["manipulative_score"].astype(float).clip(0.0, 1.0)
+    scores = result_df["manipulative_score"].astype(float).clip(0.0, 1.0)
+    thresholds = result_df.get("threshold", 0.5)
+    thresholds = pd.Series(thresholds, index=result_df.index).astype(float).clip(1e-9, 1.0 - 1e-9)
+    labels = pd.Series(
+        pd.NA,
+        index=result_df.index,
+        dtype="Float64",
+    )
+    below = scores < thresholds
+    labels[below] = 0.5 * scores[below] / thresholds[below]
+    labels[~below] = 0.5 + 0.5 * (scores[~below] - thresholds[~below]) / (1.0 - thresholds[~below])
+    labels = labels.astype(float).clip(0.0, 1.0)
     id_col = resolve_column(df, BATCH_ID_COLUMNS)
     text_col = resolve_column(df, BATCH_TEXT_COLUMNS)
 
@@ -68,7 +79,10 @@ with tab_live:
         st.json(result["nearest_manual_examples"])
 
 with tab_batch:
-    st.caption("Beklenen jüri/test formatı: `test_id,text`. Çıktıda `label` 0-1 arası manipülatiflik skorudur.")
+    st.caption(
+        "Beklenen jüri/test formatı: `test_id,text`. Çıktıda `label` 0-1 arası manipülatiflik skorudur; "
+        "model karar eşiği çıktıdaki 0.5 değerine hizalanır."
+    )
     template = pd.DataFrame(
         {
             "test_id": ["TEST_0000", "TEST_0001"],
@@ -85,7 +99,10 @@ with tab_batch:
         mime="text/csv",
     )
     uploaded = st.file_uploader("CSV yükle: `test_id,text` formatı beklenir", type=["csv"])
-    st.caption("Batch çıktısı `test_id,text,label` kolonlarını üretir; `label` 0-1 arası manipülatiflik skorudur.")
+    st.caption(
+        "Batch çıktısı `test_id,text,label` kolonlarını üretir. `label < 0.5` organik, "
+        "`label >= 0.5` manipülatif kararına karşılık gelir."
+    )
     if uploaded is not None:
         df = pd.read_csv(uploaded)
         df.columns = [str(col).strip() for col in df.columns]

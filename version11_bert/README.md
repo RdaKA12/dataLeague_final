@@ -115,4 +115,5 @@ version11_bert/examples/v11_batch_test_sample.csv
 Batch outputs:
 
 - `v11_batch_predictions.csv`: `test_id,text,label`.
-- `label` is the 0-1 manipulative score produced by the model.
+- `label` is a 0-1 manipulative submission score. The model threshold is
+  aligned to `0.5`, so `<0.5` means Organic and `>=0.5` means Manipulative.
