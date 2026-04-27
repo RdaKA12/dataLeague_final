@@ -35,15 +35,14 @@ def build_batch_outputs(df: pd.DataFrame, results: list[dict]) -> tuple[pd.DataF
     front_cols = [col for col in [id_col, text_col] if col is not None]
     prediction_cols = [
         "prediction",
-        "decision",
-        "decision_tr",
         "manipulative_score",
         "organic_score",
         "confidence",
         "review_flag",
         "threshold",
     ]
-    remaining_cols = [col for col in detailed.columns if col not in front_cols + prediction_cols]
+    hidden_cols = ["decision", "decision_tr"]
+    remaining_cols = [col for col in detailed.columns if col not in front_cols + prediction_cols + hidden_cols]
     detailed = detailed[front_cols + prediction_cols + remaining_cols]
 
     if id_col is None:
