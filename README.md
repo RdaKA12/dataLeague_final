@@ -84,8 +84,20 @@ The final jury presentation is available at:
 version11_delivery/pitch_deck/dataleague_v11_final_pitch_deck.pptx
 ```
 
+The preferred designed Canva version is:
+
+```text
+https://www.canva.com/d/3rz0WJsv3dXNCyC
+```
+
 Slide-by-slide flow:
 
 ```text
 version11_delivery/pitch_deck/V11_SLIDE_FLOW.md
+```
+
+Canva export instructions:
+
+```text
+version11_delivery/pitch_deck/CANVA_DESIGN.md
 ```
