@@ -11,7 +11,7 @@ from pptx.chart.data import CategoryChartData, ChartData
 from pptx.dml.color import RGBColor
 from pptx.enum.chart import XL_CHART_TYPE, XL_DATA_LABEL_POSITION, XL_LEGEND_POSITION
 from pptx.enum.shapes import MSO_SHAPE
-from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
+from pptx.enum.text import MSO_ANCHOR, MSO_AUTO_SIZE, PP_ALIGN
 from pptx.util import Inches, Pt
 
 
@@ -75,6 +75,8 @@ def add_text(
     frame.margin_top = Inches(0.02)
     frame.margin_bottom = Inches(0.02)
     frame.vertical_anchor = valign
+    frame.word_wrap = True
+    frame.auto_size = MSO_AUTO_SIZE.TEXT_TO_FIT_SHAPE
     p = frame.paragraphs[0]
     p.alignment = align
     run = p.add_run()

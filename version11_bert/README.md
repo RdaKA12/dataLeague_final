@@ -106,6 +106,12 @@ TEST_0000,"I got a likely phishing message about a fake crypto giveaway."
 TEST_0001,"No transactions on weekends; I will check it again tomorrow."
 ```
 
+Sample file:
+
+```text
+version11_bert/examples/v11_batch_test_sample.csv
+```
+
 Batch outputs:
 
 - `v11_batch_predictions_detailed.csv`: original columns plus scores, decisions, confidence, and review flag.

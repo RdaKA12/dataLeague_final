@@ -9,6 +9,9 @@
 !version11_bert/requirements.txt
 !version11_bert/V11_JURY_DELIVERY_REPORT.md
 
+!version11_bert/examples/
+!version11_bert/examples/*.csv
+
 !version11_bert/scripts/
 !version11_bert/scripts/*.py
 
