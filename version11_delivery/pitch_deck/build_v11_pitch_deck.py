@@ -449,11 +449,15 @@ def build_deck() -> None:
     for i, row in dup.head(4).iterrows():
         yy = 2.13 + i * 0.82
         add_panel(slide, 7.0, yy, 5.05, 0.62, "FFFFFF")
-        text_excerpt = str(row.get("original_text", row.get("text", ""))).replace("\n", " ")[:120]
-        count = int(row.get("cluster_size", row.get("rows", 0))) if not pd.isna(row.get("cluster_size", row.get("rows", 0))) else 0
-        score = float(row.get("mean_manipulative_score", row.get("manipulative_score", 0)))
-        add_text(slide, f"{count} tekrar | skor {score:.3f}", 7.18, yy + 0.09, 1.65, 0.18, size=8, bold=True, color=COLORS["risk"])
-        add_text(slide, text_excerpt, 8.85, yy + 0.08, 3.0, 0.28, size=7, color=COLORS["muted"])
+        text_excerpt = str(row.get("sample_text", "")).replace("\n", " ")[:118]
+        count_value = row.get("rows", 0)
+        mean_value = row.get("mean_score", 0.0)
+        max_value = row.get("max_score", 0.0)
+        count = int(count_value) if not pd.isna(count_value) else 0
+        mean_score = float(mean_value) if not pd.isna(mean_value) else 0.0
+        max_score = float(max_value) if not pd.isna(max_value) else 0.0
+        add_text(slide, f"{count} tekrar | ort {mean_score:.3f} | max {max_score:.3f}", 7.18, yy + 0.09, 2.22, 0.18, size=7, bold=True, color=COLORS["risk"])
+        add_text(slide, text_excerpt, 9.48, yy + 0.08, 2.33, 0.28, size=7, color=COLORS["muted"])
     add_text(slide, "Jüri mesajı: Sistem sadece tekil metni sınıflandırmıyor; hangi kümelerin organize risk ürettiğini de gösteriyor.", 1.05, 6.2, 10.9, 0.42, size=18, bold=True, align=PP_ALIGN.CENTER)
     add_footer(slide, 8)
 
