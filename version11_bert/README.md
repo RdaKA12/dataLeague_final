@@ -115,4 +115,4 @@ version11_bert/examples/v11_batch_test_sample.csv
 Batch outputs:
 
 - `v11_batch_predictions.csv`: `test_id,text,label`.
-- `label` values are `O` for Organic and `M` for Manipulative.
+- `label` is the 0-1 manipulative score produced by the model.

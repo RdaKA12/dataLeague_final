@@ -26,7 +26,7 @@ def resolve_column(df: pd.DataFrame, candidates: list[str]) -> str | None:
 
 def build_batch_output(df: pd.DataFrame, results: list[dict]) -> pd.DataFrame:
     result_df = pd.DataFrame(results)
-    labels = result_df["decision"].map({"Organic": "O", "Manipulative": "M"})
+    labels = result_df["manipulative_score"].astype(float).clip(0.0, 1.0)
     id_col = resolve_column(df, BATCH_ID_COLUMNS)
     text_col = resolve_column(df, BATCH_TEXT_COLUMNS)
 
@@ -80,6 +80,7 @@ with tab_batch:
         mime="text/csv",
     )
     uploaded = st.file_uploader("CSV yükle: `test_id,text` formatı beklenir", type=["csv"])
+    st.caption("Batch çıktısı `test_id,text,label` kolonlarını üretir; `label` 0-1 arası manipülatiflik skorudur.")
     if uploaded is not None:
         df = pd.read_csv(uploaded)
         df.columns = [str(col).strip() for col in df.columns]
