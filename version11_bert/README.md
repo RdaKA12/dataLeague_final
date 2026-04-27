@@ -115,4 +115,4 @@ version11_bert/examples/v11_batch_test_sample.csv
 Batch outputs:
 
 - `v11_batch_predictions_detailed.csv`: original columns plus scores, decisions, confidence, and review flag.
-- `v11_batch_submission.csv`: `test_id,label,manipulative_score,organic_score,review_flag`.
+- `v11_batch_submission.csv`: `test_id,prediction,manipulative_score,organic_score,review_flag`.

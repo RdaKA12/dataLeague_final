@@ -26,8 +26,7 @@ def resolve_column(df: pd.DataFrame, candidates: list[str]) -> str | None:
 
 def build_batch_outputs(df: pd.DataFrame, results: list[dict]) -> tuple[pd.DataFrame, pd.DataFrame]:
     result_df = pd.DataFrame(results)
-    result_df["label"] = result_df["decision"].map({"Organic": "O", "Manipulative": "M"})
-    result_df["prediction"] = result_df["label"]
+    result_df["prediction"] = result_df["decision"].map({"Organic": "O", "Manipulative": "M"})
 
     detailed = pd.concat([df.reset_index(drop=True), result_df], axis=1)
     id_col = resolve_column(detailed, BATCH_ID_COLUMNS)
@@ -36,7 +35,6 @@ def build_batch_outputs(df: pd.DataFrame, results: list[dict]) -> tuple[pd.DataF
     front_cols = [col for col in [id_col, text_col] if col is not None]
     prediction_cols = [
         "prediction",
-        "label",
         "decision",
         "decision_tr",
         "manipulative_score",
@@ -52,7 +50,7 @@ def build_batch_outputs(df: pd.DataFrame, results: list[dict]) -> tuple[pd.DataF
         submission = pd.DataFrame({"test_id": [f"TEST_{idx:04d}" for idx in range(len(result_df))]})
     else:
         submission = detailed[[id_col]].rename(columns={id_col: "test_id"}).copy()
-    submission["label"] = result_df["label"]
+    submission["prediction"] = result_df["prediction"]
     submission["manipulative_score"] = result_df["manipulative_score"]
     submission["organic_score"] = result_df["organic_score"]
     submission["review_flag"] = result_df["review_flag"]
